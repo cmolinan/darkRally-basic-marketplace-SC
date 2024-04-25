@@ -1,8 +1,18 @@
 require("dotenv").config();
-require("@nomicfoundation/hardhat-toolbox");
-require("@openzeppelin/hardhat-upgrades");
-require('solidity-coverage');
 
+
+// -->Para poder verificar en CELO hubo problemas. Se resolvieron instalando hardhat-celo
+// npm i hardhat-celo --save-dev
+// -import the plugin in your hardhat.config.js:
+//  require("hardhat-celo");
+
+// -Remove / Comment: require("@nomicfoundation/hardhat-toolbox");
+// -Remove / Comment: require('solidity-coverage');
+
+require("hardhat-celo");  
+// require("@nomicfoundation/hardhat-toolbox");
+require("@openzeppelin/hardhat-upgrades");
+// require('solidity-coverage');
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -32,11 +42,38 @@ module.exports = {
       gas: "auto",
       gasPrice: "auto",
     },
+    polygon: {
+      url: process.env.POLYGON_MAINNET_URL,
+      accounts: [process.env.PRIVATE_KEY || ""],
+      timeout: 0,
+      gas: "auto",
+      gasPrice: "auto",
+    },
+    celo: {
+      url: process.env.CELO_MAINNET_URL,
+      accounts: [process.env.PRIVATE_KEY || ""],
+      timeout: 0,
+      gas: "auto",
+      gasPrice: "auto",
+    },    
   },
   etherscan: {
     apiKey: {      
       goerli: process.env.API_KEY_ETHERSCAN,        
       polygonMumbai: process.env.API_KEY_POLYGONSCAN,
+      polygon: process.env.API_KEY_POLYGONSCAN,
+      celo: process.env.API_KEY_CELOSCAN,
     },
+    customChains: [
+      {
+        network: "celo",
+        chainId: 42220,
+        urls: {
+          apiURL: "https://explorer.celo.org/mainnet/api",
+          browserURL: "https://celoscan.io/"
+        }
+      }
+    ]
+
   },
 };

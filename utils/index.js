@@ -42,9 +42,11 @@ async function printAddress(contractName, proxyAddress) {
 
 async function deploySC(contractName, args = []) {
   var smartContract = await gcf(contractName);
+  console.log("Passed: deploySC- smartContract");
   var proxyContract = await dp(smartContract, [...args], {
     kind: "uups",
   });
+  console.log("Passed: deploySC- proxyContract");
   if (process.env.HARDHAT_NETWORK) {
     var tx = await proxyContract.deployed();
     // true cuando se usa '--network matic' en el script de deployment
