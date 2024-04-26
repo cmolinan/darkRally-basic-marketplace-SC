@@ -7,6 +7,16 @@ window.ethers = ethers;
 var provider, signer, account;
 var usdcTkContract, nftTknContract, mktSContract;
 
+  // Deprecated Mumbai Contracts
+  // var nftTknAdd = "0x7Eb878f9c5AEbe42a4728e2F82eAC6388A583241";
+  // var usdcAddress = "0x643864518D0A8ca16EeF1c827E5E370ed51721FB"; 
+  // var mktSContractAdd = "0xCc637e6054c4405F40678c05E41EbF9a735De961";
+  
+//Smart Contracts in Sepolia testnet
+var nftTknAdd = "0xe25814F33dDc9712C433ab8c5aCcDC2634a47205";
+var usdcAddress = "0x883d79a054fC82C7eB2e73Bc794eBD6992f0449C"; 
+var mktSContractAdd = "0xb9F416931cc3918746d4A5c1F7B148956c9551F3";
+
 // REQUIRED
 // Conectar con metamask
 function initSCs() {
@@ -17,11 +27,6 @@ function initSCs() {
   var usdcTknAbi = require("../artifacts/contracts/USDCoin.sol/USDCoin.json").abi;
   var mktPlaceAbi = require("../artifacts/contracts/DarkRallyMktPlace.sol/DarkRallyMktPlace.json").abi; 
 
-  var nftTknAdd = "0x7Eb878f9c5AEbe42a4728e2F82eAC6388A583241";
-  var usdcAddress = "0x643864518D0A8ca16EeF1c827E5E370ed51721FB"; 
-  var mktSContractAdd = "0xCc637e6054c4405F40678c05E41EbF9a735De961";
-
-    
   nftTknContract = new Contract(nftTknAdd, nftTknAbi, provider);
   usdcTkContract = new Contract(usdcAddress, usdcTknAbi, provider);
   mktSContract = new Contract(mktSContractAdd, mktPlaceAbi, provider);
@@ -45,7 +50,7 @@ function setUpListeners() {
     accountMsg.innerHTML = "";
     
     const chainId1 = await window.ethereum.request({ method: 'eth_chainId' });
-    if (chainId1 !== '0x13881')  connectErr.innerHTML = "Not connected to Mumbai!" 
+    if (chainId1 !== '0xaa36a7')  connectErr.innerHTML = "Not connected to Sepolia!" 
     else connectErr.innerHTML = "";
     console.log("CHAIN:", chain);
 
@@ -67,10 +72,10 @@ function setUpListeners() {
     eraseAllErrorMsgs();
     try{
       if (window.ethereum) {
-        //verify it's in Mumbai testNet
+        //verify it's in Sepolia testNet
         connectErr.innerText = "";        
         const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-        if (chainId == '0x13881') {
+        if (chainId == '0xaa36a7') {
 
           accountMsg.innerHTML = "";
           [account] = await ethereum.request({
@@ -85,7 +90,7 @@ function setUpListeners() {
 
           accountMsg.innerHTML = account;
 
-        } else connectErr.innerText = "Please connect your wallet to MUMBAI Testnet!";
+        } else connectErr.innerText = "Please connect your wallet to SEPOLIA Testnet!";
       
       };
     } catch (error) {
@@ -129,7 +134,7 @@ function setUpListeners() {
     }
     try {
       usdcAllowancePrint.innerText = "";
-      var res = await usdcTkContract.allowance(account, '0xCc637e6054c4405F40678c05E41EbF9a735De961');
+      var res = await usdcTkContract.allowance(account, mktSContractAdd);
       
       var value = ethers.utils.formatUnits(res, 6);
       console.log("USDC-allowance", value);
@@ -239,7 +244,7 @@ function setUpListeners() {
       
       var tx = await nftTknContract
         .connect(signer)
-        .setApprovalForAll("0xCc637e6054c4405F40678c05E41EbF9a735De961", true);
+        .setApprovalForAll(mktSContractAdd, true);
         approveNftMsg.innerText = "...transaction sent. Please wait";
       var response = await tx.wait();
       var transactionHash = response.transactionHash;
@@ -274,7 +279,7 @@ function setUpListeners() {
       
       var tx = await nftTknContract
         .connect(signer)
-        .setApprovalForAll("0xCc637e6054c4405F40678c05E41EbF9a735De961", false);
+        .setApprovalForAll(mktSContractAdd, false);  //MarketPlace Address
         rApproveNftMsg.innerText = "...transaction sent. Please wait";
       var response = await tx.wait();
       var transactionHash = response.transactionHash;
@@ -306,7 +311,7 @@ function setUpListeners() {
        approveAllowancePrint.innerText = "";
 
        //The question is for DarkRallyNFT SC about this Contract
-       var res = await nftTknContract.isApprovedForAll(account, '0xCc637e6054c4405F40678c05E41EbF9a735De961');
+       var res = await nftTknContract.isApprovedForAll(account, mktSContractAdd); //MarketPlace Address
             
        approveAllowancePrint.innerText =  res ? "YES" :"NO";  //true or false
        approveNftBtn.disabled = res;
