@@ -6,7 +6,7 @@ metadataHash: Qmegv2LoRAKssd2ReJfHLo7Gya7mGc6wrT7BMCgVk9gfJX
 maxSupply: 10000
 initialPrice: 7
 askDateForMint: true 
-validUntil: 1704023999  (31 dic 2023)
+validUntil: 1704023999 (31 dic 2023) -- 1767182399 (31 dic 2025)
 entriesCounter: 1
 
 id: 102 
