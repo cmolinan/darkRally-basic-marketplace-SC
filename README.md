@@ -20,6 +20,7 @@ For this purpose, a React front-end was developed to demonstrate the functionali
 [Link to simple MarketPlace's front-end live Demo](https://cmolinan.github.io/DarkRallyMarketPlace/)
 
 - Both front-end uses Testnet Polygon Mumbai and coins from our own USDC Smart Contract.
+- (April 2024 -> Important: Mumbai is deprecated since April 2024, so is pending to move to another chain)
 - If you wish to test these developments, you must mint coins from the USDC Contract that is also included in this repository.
 - If you only want to test using the front-ends, write to this email to mint coins for you: cmolinan@gmail.com
 
@@ -31,6 +32,9 @@ For this purpose, a React front-end was developed to demonstrate the functionali
   git clone https://github.com/JorgeRojas827/nft-marketplace.git
 
 - Install the dependencies using `npm install`
+
+- Change to src folder and run `npm run build`. This will generate the distribution files (./dist folder).
+  To run the webapp locally in Visual Code, go to ./dist folder, select index.html and click the right button selecting "Open with Live Server".
 
 ## Authors
 👤 **Carlos Molina**
