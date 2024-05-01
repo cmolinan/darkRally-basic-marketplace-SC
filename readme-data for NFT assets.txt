@@ -168,25 +168,3 @@ vehicles
 505 https://gateway.pinata.cloud/ipfs/QmSRNdmgzF4PqAKw479PA4UR2ujvtG6uq8CmRfSMpCR2e3?filename=505.json
 
 
-
-
-
-
-0:
-string: nameOfNFT o DRchamps-serie23-A
-1:
-string: category Tickets
-2:
-string: metadataHashIpfs Qmegv2LoRAKssd2ReJfHLo7Gya7mGc6wrT7BMCgVk9gfJX
-3:
-uint256: maxSupply 100
-4:
-uint256: initialPrice 7
-5:
-bool: askDateForMint true
-6:
-uint256: validUntil 1704023999
-7:
-uint256: entriesCounter 1
-8:
-bool: tokenIsRegistered true
