@@ -24,9 +24,10 @@ In addition, there is another simple interface to test the following functionali
 
 [Link to simple MarketPlace's front-end live Demo](https://cmolinan.github.io/DarkRallyMarketPlace/)
 
-- Both front-end uses Testnet Sepolia and  tokens from our own USDC Smart Contract.
+- Both front-end uses Testnet Sepolia and tokens from our own USDC Smart Contract.
 - If you wish to test these developments, you must mint coins from the USDC Contract that is also included in this repository.
 - If you only want to test using the front-ends, write to this email to mint coins for you: cmolinan@gmail.com
+- Don't forget to get Sepolia tokens from a faucet
 
 ## DOCUMENTATION
 
