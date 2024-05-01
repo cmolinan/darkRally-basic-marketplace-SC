@@ -50,12 +50,12 @@ SMART CONTRACTS:
 ```bash
 npx hardhat --network sepolia run .\scripts\deployUSDC.js
 ```
-- 
+
 MAIN FRONTEND:
 - To get a local copy of a fork of the Jorge Rojas's main Front-End, go to this repository:
   https://github.com/cmolinan/DarkRally-BlockChain-Main-Frontend
 
-  More details about this fork are there.
+  More details about this fork are found there.
 
 SIMPLE MARKETPLACE FRONTEND:
 - To get a local copy up, clone the repo like this:  
